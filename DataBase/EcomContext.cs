@@ -2,10 +2,10 @@ using apiVcode.Models;
 using Microsoft.EntityFrameworkCore;
 
 
-public class ECommerceContext : DbContext
+public class ECommContext : DbContext
 {
 #nullable disable
-  public ECommerceContext(DbContextOptions<ECommerceContext> options) : base(options)
+  public ECommContext(DbContextOptions<ECommContext> options) : base(options)
   {
   }
   // *  setando tables
