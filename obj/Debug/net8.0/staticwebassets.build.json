@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ToMmFAI3YM5oTKWkG4baf4R0da7iPnAkeFDHc0S0/N0=",
+  "Hash": "XVG7yyn8yr817ZvvLoJvPjP7jcXB74CXNvWNih+wo1s=",
   "Source": "apiC",
   "BasePath": "_content/apiC",
   "Mode": "Default",
@@ -16,44 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Projetos\\apiC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\apiC.styles.css",
-      "SourceId": "apiC",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Projetos\\apiC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/apiC",
-      "RelativePath": "apiC.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Projetos\\apiC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\apiC.styles.css"
-    },
-    {
-      "Identity": "C:\\Projetos\\apiC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\apiC.bundle.scp.css",
-      "SourceId": "apiC",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Projetos\\apiC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/apiC",
-      "RelativePath": "apiC.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Projetos\\apiC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\apiC.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Projetos\\apiC\\wwwroot\\css\\site.css",
       "SourceId": "apiC",

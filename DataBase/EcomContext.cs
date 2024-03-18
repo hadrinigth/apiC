@@ -1,11 +1,11 @@
-using apiVcode.Models;
+using apiC.Models;
 using Microsoft.EntityFrameworkCore;
 
 
-public class ECommContext : DbContext
+public class EcomContext : DbContext
 {
 #nullable disable
-  public ECommContext(DbContextOptions<ECommContext> options) : base(options)
+  public EcomContext(DbContextOptions<EcomContext> options) : base(options)
   {
   }
   // *  setando tables

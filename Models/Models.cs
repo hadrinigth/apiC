@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace apiVcode.Models;
+namespace apiC.Models;
 [Table("Admin")]
 public class Admin
 {

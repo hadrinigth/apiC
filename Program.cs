@@ -13,14 +13,14 @@ internal class Program
 
         var connectionString = builder.Configuration.GetConnectionString("Default");
 
-        builder.Services.AddDbContext<ECommContext>(options =>
+        builder.Services.AddDbContext<EcomContext>(options =>
 
         {
             options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 
         });
         builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<ECommContext>()
+        .AddEntityFrameworkStores<EcomContext>()
         .AddDefaultTokenProviders();
         var jwt = builder.Configuration.GetSection("JWT");
         var secretKey = jwt["SECRET_KEY"];
