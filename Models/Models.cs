@@ -35,6 +35,7 @@ public class User
     [Required]
     [StringLength(20)]
     public string Password { get; set; } = default!;
+    public string Localization { get; set; } = default!;
 
 }
 

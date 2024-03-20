@@ -1,73 +1,81 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using apiC.DataBase;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-internal class Program
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
+var connectionString = builder.Configuration.GetConnectionString("Default");
+
+builder.Services.AddDbContext<EcomContext>(options =>
+
 {
-    private static void Main(string[] args)
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+
+});
+
+// Add Identity with Entity Framework Core
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<EcomContext>()
+    .AddDefaultTokenProviders();
+
+// Configure JWT from configuration
+var jwt = builder.Configuration.GetSection("JWT");
+var secretKey = jwt["SECRET_KEY"];
+var issuer = jwt["Issuer"];
+var audience = jwt["Audience"];
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
     {
-        var builder = WebApplication.CreateBuilder(args);
-
-
-        var connectionString = builder.Configuration.GetConnectionString("Default");
-
-        builder.Services.AddDbContext<EcomContext>(options =>
-
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = issuer,
+            ValidAudience = audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+        };
+    });
 
-        });
-        builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-        .AddEntityFrameworkStores<EcomContext>()
-        .AddDefaultTokenProviders();
-        var jwt = builder.Configuration.GetSection("JWT");
-        var secretKey = jwt["SECRET_KEY"];
-        var issuer = jwt["Issuer"];
-        var audience = jwt["Audience"];
+var app = builder.Build();
 
-        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(Options =>
-        {
-            Options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = "JWT:Issuer",
-                ValidAudience = "JWT:Audience",
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt[secretKey]))
-            };
-        }
-        );
-
-        // Add services to the container.
-        builder.Services.AddControllersWithViews();
-
-
-        var app = builder.Build();
-
-        // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment())
-        {
-            app.UseExceptionHandler("/Home/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            app.UseHsts();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseStaticFiles();
-
-        app.UseRouting();
-
-        app.UseAuthorization();
-
-        app.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
-
-        app.Run();
-    }
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
 }
+else
+{
+    app.UseExceptionHandler("/error");
+    app.UseHsts();
+}
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "my API V1");
+});
+
+app.UseHttpsRedirection();
+
+app.UseRouting();
+
+// Add Authentication and Authorization middleware
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
