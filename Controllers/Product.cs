@@ -73,5 +73,50 @@ namespace apiC.Controllers
         return BadRequest($"Erro ao criar produto: {ex.Message}");
       }
     }
+    [HttpPut("/products/")]
+    public async Task<IActionResult> PutProduct([FromBody] Product _Product)
+    {
+      try
+      {
+        var ProductUpdate = await _db.Products.FirstOrDefaultAsync(a => a.Name == _Product.Name);
+        if (string.IsNullOrEmpty(_Product.Name))
+        {
+          return Conflict("Produto não existe");
+        }
+        else
+        {
+          var _ProductUpdate = new Product { Name = _Product.Name, Price = _Product.Price, Stock = _Product.Stock };
+          _db.Products.Update(_ProductUpdate);
+          await _db.SaveChangesAsync();
+          return Created("/products/", _ProductUpdate);
+        }
+      }
+      catch (Exception ex)
+      {
+        return BadRequest($"error no put admin : {ex.Message}");
+      }
+    }
+
+    [HttpDelete("/product/delete/")]
+    public async Task<IActionResult> ProductDelete([FromQuery] int productId) // Assumindo ID para exclusão
+    {
+      try
+      {
+
+        var _ProductDelete = await _db.Admins.FindAsync(productId);
+        if (_ProductDelete == null)
+        {
+          return Conflict("Produto não encontrado");  // Mensagem de administrador não encontrado
+        }
+
+        _db.Admins.Remove(_ProductDelete);
+        await _db.SaveChangesAsync();
+        return Ok();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest($"Erro ao excluir produto: {ex.Message}");
+      }
+    }
   }
 }

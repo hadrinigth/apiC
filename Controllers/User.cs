@@ -73,5 +73,49 @@ namespace apiC.Controllers
         return BadRequest($"Erro ao criar produto: {ex.Message}");
       }
     }
+    [HttpDelete("/user/delete/")]
+    public async Task<IActionResult> UserDelete([FromQuery] int userId) // Assumindo ID para exclusão
+    {
+      try
+      {
+
+        var _userDelete = await _db.Users.FindAsync(userId);
+        if (_userDelete == null)
+        {
+          return Conflict("user não encontrado");  // Mensagem de administrador não encontrado
+        }
+
+        _db.Users.Remove(_userDelete);
+        await _db.SaveChangesAsync();
+        return Ok();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest($"Erro ao excluir produto: {ex.Message}");
+      }
+    }
+    [HttpPut("/user/")]
+    public async Task<IActionResult> PutUser([FromBody] User _User)
+    {
+      try
+      {
+        var UserUpdate = await _db.Users.FirstOrDefaultAsync(a => a.Name == _User.Name);
+        if (string.IsNullOrEmpty(_User.Name))
+        {
+          return Conflict("user não existe");
+        }
+        else
+        {
+          var _UserUpdate = new User { Name = _User.Name, Localization = _User.Localization, Email = _User.Email, Id = _User.Id, Password = _User.Password };
+          _db.Users.Update(_UserUpdate);
+          await _db.SaveChangesAsync();
+          return Created("/user/", _UserUpdate);
+        }
+      }
+      catch (Exception ex)
+      {
+        return BadRequest($"error no update user: {ex.Message}");
+      }
+    }
   }
 }

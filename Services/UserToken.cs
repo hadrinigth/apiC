@@ -17,14 +17,14 @@ namespace apiC.Services
       var user = await _userManager.FindByNameAsync(username);
       if (user == null || !await _userManager.CheckPasswordAsync(user, password))
       {
-        return null;
+        return username;
       }
 
       // Create claims (user information)
       var claims = new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id),
-            new(ClaimTypes.Name, user.UserName),
+            new(ClaimTypes.Name ,user.UserName),
             // Add additional custom claims as needed
         };
 
