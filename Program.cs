@@ -23,12 +23,12 @@ builder.Services.AddDbContext<EcomContext>(options =>
 
 });
 
-// Add Identity with Entity Framework Core
+//  Entity Framework Core = identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<EcomContext>()
     .AddDefaultTokenProviders();
 
-// Configure JWT from configuration
+// configurando jwt  
 var jwt = builder.Configuration.GetSection("JWT");
 var secretKey = jwt["SECRET_KEY"];
 var issuer = jwt["Issuer"];
