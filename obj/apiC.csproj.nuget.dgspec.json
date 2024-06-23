@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\apiC\\apiC.csproj": {}
+    "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\apiC\\apiC.csproj": {
+    "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\apiC\\apiC.csproj",
+        "projectUniqueName": "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj",
         "projectName": "apiC",
-        "projectPath": "C:\\Projetos\\apiC\\apiC.csproj",
+        "projectPath": "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj",
         "packagesPath": "C:\\Users\\hadri\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\apiC\\obj\\",
+        "outputPath": "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -64,7 +64,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -104,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

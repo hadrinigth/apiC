@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,15 +15,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
-var connectionString = builder.Configuration.GetConnectionString("Default");
+var connection = builder.Configuration.GetConnectionString("Default");
+
+//permite injetar a instância do contexto nos controladores
+builder.Services.AddDbContext<EcomContext>(option =>
+                                            option.UseSqlServer(connection));
+
+
+
+/*var connectionString = builder.Configuration.GetConnectionString("ConnectionStrings");
 
 builder.Services.AddDbContext<EcomContext>(options =>
-
 {
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-
-});
-
+    IConfiguration configuration = builder.Configuration;
+    options.UseMySql(configuration.GetConnectionString("Default"), ServerVersion.AutoDetect(configuration.GetConnectionString("Default")));
+});*/
 //  Entity Framework Core = identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<EcomContext>()
