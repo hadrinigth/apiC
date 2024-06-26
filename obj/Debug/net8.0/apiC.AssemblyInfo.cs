@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("apiC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2f6e71224931449e0a0885b390fdde7a40fb72d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef8010d9f1f45aac7072a171176ae3c4f88bff7f")]
 [assembly: System.Reflection.AssemblyProductAttribute("apiC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("apiC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
