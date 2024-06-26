@@ -6,5 +6,14 @@ SWAGGER com os possivel retornos
 
 Apos configurar a databse localhost nos appsettings.js apenas copilar a solution
 
+Frameworks
 
+Microsoft.AspNetCore v2.2.0
+Microsoft.AspNetCore.Identity.EntityFrameworkCore v8.0.3
+Microsoft.EntityFrameworkCore v8.0.6
+Microsoft.EntityFrameworkCore.tools v8.0.3
+Microsoft.EntityFrameworkCore.SqlServer v8.0.0
+Microsoft.AspNetCore.Authentication.JwtBearer V8.0.3
+Microsoft.AspNetCore.Identity.EntityFrameworkCore V8.0.3
 
+Pomelo.EntityFrameworkCore.MySql V8.0.0
