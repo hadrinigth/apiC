@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj": {}
+    "C:\\Users\\hadri\\source\\repos\\hadrinigth\\apiC\\apiC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj": {
+    "C:\\Users\\hadri\\source\\repos\\hadrinigth\\apiC\\apiC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj",
+        "projectUniqueName": "C:\\Users\\hadri\\source\\repos\\hadrinigth\\apiC\\apiC.csproj",
         "projectName": "apiC",
-        "projectPath": "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\apiC.csproj",
+        "projectPath": "C:\\Users\\hadri\\source\\repos\\hadrinigth\\apiC\\apiC.csproj",
         "packagesPath": "C:\\Users\\hadri\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\hadri\\Source\\Repos\\hadrinigth\\apiC\\obj\\",
         "projectStyle": "PackageReference",
@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.5.1, )"
+            },
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.2.0, )"
